@@ -1,0 +1,23 @@
+{
+  "name": "3js-the-first-arcent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wenorter/3JS-The-First-Arcent.git",
+    "deploy": "gp-pages -d dist"
+  },
+  "author": "Wenorter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wenorter/3JS-The-First-Arcent/issues"
+  },
+  "homepage": "https://github.com/Wenorter/3JS-The-First-Arcent#readme",
+  "dependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}
