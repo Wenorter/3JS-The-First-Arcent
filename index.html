@@ -1,0 +1,73 @@
+<html>
+  	<head>
+		<title>The First Arcent</title>
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "./build/three.module.js"
+				}
+			}
+		</script>
+		<link rel="shortcut icon" href="#">
+		<link rel="stylesheet" href="stylesheet.css">
+        <script type="module" src="arcent.js"></script>
+		<script id="vertexShader" type="x-shader/x-vertex">
+			attribute vec3 color;
+    		attribute vec3 cnormal;
+
+			varying vec3 vPos;
+			varying vec3 vNormal;
+			varying vec3 vColor;
+
+			void main() {
+				gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+				vPos = position;
+				vNormal = cnormal;
+				vColor = color;
+
+			}
+		</script>
+		<script id="fragmentShader" type="x-shader/x-fragment">
+			varying vec3 vPos;
+			varying vec3 vNormal;
+			varying vec3 vColor;
+
+			uniform vec2 u_resolution;
+			uniform float u_time;
+			uniform float u_color;
+			uniform float u_fractalIndex;
+			
+
+			void main() {
+				vec2 coord = u_fractalIndex * (gl_FragCoord.xy - u_resolution/ 2.0) / min(u_resolution.x, u_resolution.y);
+				vec3 l = normalize(vec3(1, 1, 1));
+				vec3 v = normalize(cameraPosition);
+
+				float len;
+
+				for (int i = 0; i < 50; i++){
+					len = length(vec2(coord.x, coord.y));
+
+					coord.x = coord.x - cos(coord.y + sin(len)) + cos(u_time/ 9.0);
+					coord.y = coord.y + sin(coord.x + cos(len)) + sin(u_time / 12.0);
+				}
+
+				float i = max(dot(vNormal, l), 0.0) + 0.9;
+				float d =  1.0 - length(vPos - v) + 0.7;
+
+				//rgba
+				gl_FragColor = vec4(cos(len * u_color), cos(len * 1.0), cos(len * 1.0), 1.0) * i 
+				- vec4(cos(len * 2.0), cos(len * 1.0), cos(len * 1.0), 1.0) * d;   
+        	}
+		</script>
+  	</head>
+  	<body>
+		<div id="info">
+			<div id ="canvas">
+				<h3>The First Arcent</h3>
+				<h6>This is a tribute to <a href="https://angusnicneven.com/">Terminal 00</a></h6>
+			</div>
+		</div>
+	
+    </body>
+</html>

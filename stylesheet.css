@@ -1,0 +1,41 @@
+body {
+  cursor: url(/image/expandz.png) 4 12, auto;
+  font-family: Monospace;
+  background-image: url(/image/The_One_WILL_Become_Whole_Once_More.png);
+  background-color: black;
+  background-repeat: repeat;
+  background-size: 100%;
+  margin: 0px;
+  overflow: hidden;
+}
+
+a{
+  color:cyan
+}
+
+#canvas {
+  width: 100%; 
+  height: 100%;
+}
+
+#info {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    height: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    color: rgb(226, 243, 255);
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 10px #310606;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #310606;
+    }
+}
