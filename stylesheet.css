@@ -30,7 +30,6 @@ a{
     -webkit-animation: glow 1s ease-in-out infinite alternate;
     -moz-animation: glow 1s ease-in-out infinite alternate;
     animation: glow 1s ease-in-out infinite alternate;
-    z-index: -1;
 }
 
 @-webkit-keyframes glow {
