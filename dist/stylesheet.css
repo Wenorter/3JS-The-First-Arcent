@@ -1,12 +1,13 @@
 body {
-  cursor: url(/image/expandz.png) 4 12, auto;
+  cursor: url(./image/expandz.png) 4 12, auto;
   font-family: Monospace;
-  background-image: url(/image/The_One_WILL_Become_Whole_Once_More.png);
+  background-image: url(./image/The_One_WILL_Become_Whole_Once_More.png);
   background-color: black;
   background-repeat: repeat;
   background-size: 100%;
   margin: 0px;
   overflow: hidden;
+  z-index: -1;
 }
 
 a{
@@ -29,6 +30,7 @@ a{
     -webkit-animation: glow 1s ease-in-out infinite alternate;
     -moz-animation: glow 1s ease-in-out infinite alternate;
     animation: glow 1s ease-in-out infinite alternate;
+    z-index: -1;
 }
 
 @-webkit-keyframes glow {

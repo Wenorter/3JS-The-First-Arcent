@@ -35,6 +35,7 @@ camera.position.set(0, 0, 100);
 camera.lookAt(0, 0, 0);
 
 const controls = new OrbitControls(camera, renderer.domElement);
+controls.update();
 
 const clearScene = function () {
     scene.children.forEach(c => {
@@ -102,11 +103,6 @@ const animate = function(){
     // it stops at MAX_TIME / 0, unless options.loop === true
     if (options.animate) 
     {
-        if (animation) {
-            window.cancelAnimationFrame(animation);
-        } 
-
-        const dt = now - lastTime;
         let newTime = 0;
 
         if (options.forward) {
@@ -155,15 +151,18 @@ const animate = function(){
         }   
     }
 
+    requestAnimationFrame(animate)
+
     let increment = 0.03;
     scene.rotation.x += increment;
     scene.rotation.y += increment;
     scene.rotation.z += increment;
 
+    
+    animateShader(); 
     controls.update();
-    animateShader();
     renderer.render(scene, camera);
-    animation = window.requestAnimationFrame(animate)
+   
 }
 
 const animateShader = function(){
